@@ -1,0 +1,18 @@
+spring:
+  application:
+                 name: My_first_project
+  datasource:
+        username: postgres
+        password: 1234
+
+        url: jdbc:postgresql://localhost:5432/employers
+
+        driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update   # jadvalni avtomatik yaratadi (develop payti uchun)
+    show-sql: true       # konsolda SQL so?rovlarini ko?rsatadi
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
