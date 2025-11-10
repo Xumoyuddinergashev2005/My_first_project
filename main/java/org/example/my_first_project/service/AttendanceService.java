@@ -1,6 +1,7 @@
 package org.example.my_first_project.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.my_first_project.dto.CheckInDto;
 import org.example.my_first_project.entity.Attendance;
 import org.example.my_first_project.entity.Employer;
 import org.example.my_first_project.exception.NotFoundException;
@@ -18,9 +19,9 @@ public class AttendanceService {
     private final AttendanceRepository attendanceRepository;
     private final EmployerRepository employerRepository;
 
-    public Attendance checkIn(Long Id) {
-        Employer employer = employerRepository.findById(Id)
-                .orElseThrow(() -> new NotFoundException("Employee not found with id: " + Id));
+    public Attendance checkIn(CheckInDto dto) {
+        Employer employer = employerRepository.findById(dto.id())
+                .orElseThrow(() -> new NotFoundException("Employee not found with id: " + dto.id()));
 
         Attendance attendance = Attendance.builder()
                 .employer(employer)
